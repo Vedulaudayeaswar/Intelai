@@ -6,27 +6,30 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
+
 body {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url('./src/image/background.jpg') no-repeat;
+    background: url('./src/image/stock.png') no-repeat;
     background-size: cover;
     background-position: center;
     z-index: 99;
-    
-    animation: backgroundZoom 30s infinite alternate;
+
+    /* Add animation for horizontal scrolling */
+    animation: backgroundScroll 60s linear infinite;
 }
 
-@keyframes backgroundZoom {
+@keyframes backgroundScroll {
     0% {
-        background-size: 100%;
+        background-position: 0% center;
     }
     100% {
-        background-size: 110%;
+        background-position: 100% center;
     }
 }
+
 
 header{
     position:fixed;

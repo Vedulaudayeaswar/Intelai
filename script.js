@@ -24,6 +24,7 @@ registerLink.addEventListener('click', () => {
     wrapper.classList.remove('active');
 });
 
+
 // Handling login form submission
 const LoginForm = document.querySelector('.form-box.login form');
 loginForm.addEventListener('submit', function (e) {
