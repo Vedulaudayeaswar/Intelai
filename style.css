@@ -161,7 +161,7 @@ header{
 }
 .form-box h2{
     font-size:2em;
-    color:#162938;
+    color:black;
     text-align:center;
 
 }
@@ -178,7 +178,7 @@ header{
     left:5px;
     transform:translateY(-50%);
     font-size: 1em;
-    color:#162938;
+    color:black;
     font-weight:500;
     pointer-events:none;
     transition: .5s;
