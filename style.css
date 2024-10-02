@@ -6,16 +6,28 @@
     box-sizing: border-box;
     font-family: 'Poppins', sans-serif;
 }
-body{
-    display:flex;
+body {
+    display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
     background: url('./src/image/background.jpg') no-repeat;
     background-size: cover;
     background-position: center;
-    z-index:99;
+    z-index: 99;
+    
+    animation: backgroundZoom 30s infinite alternate;
 }
+
+@keyframes backgroundZoom {
+    0% {
+        background-size: 100%;
+    }
+    100% {
+        background-size: 110%;
+    }
+}
+
 header{
     position:fixed;
     top: 0;
