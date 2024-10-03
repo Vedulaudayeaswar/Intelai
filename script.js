@@ -106,7 +106,7 @@ loginForm.addEventListener('submit', function (e) {
     .then(response => response.json())
     .then(data => {
         console.log('Success:', data);
-        // Optionally handle success, e.g., hide the form
+       
         loginForm.reset();
     })
     .catch((error) => {
@@ -114,6 +114,12 @@ loginForm.addEventListener('submit', function (e) {
     });
 });
 
+const hamburger = document.querySelector('.hamburger');
+const navigation = document.querySelector('.navigation');
+
+hamburger.addEventListener('click', () => {
+    navigation.classList.toggle('active');
+});
 
 
 
