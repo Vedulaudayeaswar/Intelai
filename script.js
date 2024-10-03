@@ -1,8 +1,12 @@
+// Query selectors for elements
 const wrapper = document.querySelector('.wrapper');
 const loginLink = document.querySelector('.register-link');
 const registerLink = document.querySelector('.login-link');
 const btnLoginPopup = document.querySelector('.btnLogin-popup');
 const closeIcon = document.querySelector('.icon-close');
+const hamburger = document.querySelector('.hamburger');
+const navigation = document.querySelector('.navigation');
+const navLinks = document.querySelectorAll('.navigation a');
 
 // Open form popup when "Login" button is clicked
 btnLoginPopup.addEventListener('click', () => {
@@ -24,72 +28,6 @@ registerLink.addEventListener('click', () => {
     wrapper.classList.remove('active');
 });
 
-
-// Handling login form submission
-const LoginForm = document.querySelector('.form-box.login form');
-loginForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    const email = loginForm.email.value; // Access email directly from the form
-    const password = loginForm.password.value; // Access password directly
-
-    // Submit the form to Formspree
-    fetch('https://formspree.io/f/mvgpejrw', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            email: email,
-            password: password,
-        }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-        // Optionally handle success, e.g., hide the form
-        // Hide the form and display a success message
-        loginForm.reset();
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
-});
-
-// Handling register form submission
-const registerForm = document.querySelector('.form-box.register form');
-registerForm.addEventListener('submit', function (e) {
-    e.preventDefault();
-
-    const username = registerForm.username.value; // Access username directly
-    const email = registerForm.email.value; // Access email directly
-    const password = registerForm.password.value; // Access password directly
-
-    // Submit the form to Formspree
-    fetch('https://formspree.io/f/mvgpejrw', {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-            username: username,
-            email: email,
-            password: password,
-        }),
-    })
-    .then(response => response.json())
-    .then(data => {
-        console.log('Success:', data);
-        // Optionally handle success, e.g., hide the form
-        registerForm.reset();
-    })
-    .catch((error) => {
-        console.error('Error:', error);
-    });
-});
-
-
-
 // Handling login form submission
 const loginForm = document.querySelector('.form-box.login form');
 loginForm.addEventListener('submit', function (e) {
@@ -106,7 +44,6 @@ loginForm.addEventListener('submit', function (e) {
     .then(response => response.json())
     .then(data => {
         console.log('Success:', data);
-       
         loginForm.reset();
     })
     .catch((error) => {
@@ -114,12 +51,36 @@ loginForm.addEventListener('submit', function (e) {
     });
 });
 
-const hamburger = document.querySelector('.hamburger');
-const navigation = document.querySelector('.navigation');
+// Handling register form submission
+const registerForm = document.querySelector('.form-box.register form');
+registerForm.addEventListener('submit', function (e) {
+    e.preventDefault();
 
+    const formData = new FormData(registerForm);
+
+    // Submit the form to Formspree
+    fetch('https://formspree.io/f/mvgpejrw', {
+        method: 'POST',
+        body: formData,
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Success:', data);
+        registerForm.reset();
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+    });
+});
+
+// Toggle navigation menu on mobile view
 hamburger.addEventListener('click', () => {
     navigation.classList.toggle('active');
 });
 
-
-
+// Close the navigation menu after clicking on a navigation link (for mobile view)
+navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+        navigation.classList.remove('active');
+    });
+});
